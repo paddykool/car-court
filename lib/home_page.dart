@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:car_court/car.dart';
+import 'package:car_court/car_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -20,7 +21,17 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: ListView.builder(
           itemCount: Car.cars.length,
-          itemBuilder: (context, index) => _buildCarCard(Car.cars[index]),
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CarDetails(car: Car.cars[index]),
+                ),
+              );
+            },
+            child: _buildCarCard(Car.cars[index]),
+          ),
         ),
       ),
     );
