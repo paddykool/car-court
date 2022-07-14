@@ -24,7 +24,6 @@ class _CarDetailsState extends State<CarDetails> {
         title: (Text(widget.car.name!)),
       ),
       body: SafeArea(
-        // TODO - try to have just a listView here?
         child: Column(
           children: [
             // This is the picture of the car...
@@ -36,7 +35,6 @@ class _CarDetailsState extends State<CarDetails> {
               ),
             ),
             // This is everything below the picture
-            // TODO - Why do we even need a stack here? - Try listView
             Slider(
               min: 1,
               max: 4.0,
@@ -56,39 +54,7 @@ class _CarDetailsState extends State<CarDetails> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.car.year!.toString(),
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.car.name!,
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'Copyright: P to the K',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          widget.car.description!,
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: _carDetailsList(),
                   ),
                 ],
               ),
@@ -98,51 +64,40 @@ class _CarDetailsState extends State<CarDetails> {
       ),
     );
   }
-}
 
-// ListView(
-// children: [
-// SizedBox(
-// width: double.infinity,
-// child: Image(
-// image: AssetImage(widget.car.url!),
-// ),
-// ),
-// Padding(
-// padding: const EdgeInsets.all(12.0),
-// child: Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [
-// Text(
-// widget.car.year!.toString(),
-// style: const TextStyle(
-// fontSize: 18,
-// fontWeight: FontWeight.bold,
-// ),
-// ),
-// const SizedBox(height: 4),
-// Text(
-// widget.car.name!,
-// style: const TextStyle(
-// fontSize: 18,
-// ),
-// ),
-// const SizedBox(height: 4),
-// const Text(
-// 'Copyright: P to the K',
-// style: TextStyle(
-// fontSize: 16,
-// ),
-// ),
-// const SizedBox(height: 8),
-// Text(
-// widget.car.description!,
-// style: const TextStyle(
-// fontSize: 16,
-// ),
-// ),
-// ],
-// ),
-// ),
-// ],
-// ),
+  Widget _carDetailsList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.car.year!.toString(),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          widget.car.name!,
+          style: const TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(height: 4),
+        const Text(
+          'Copyright: P to the K',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          widget.car.description!,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
+        ),
+      ],
+    );
+  }
+}
