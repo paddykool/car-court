@@ -1,5 +1,4 @@
 import 'package:car_court/car.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CarDetails extends StatefulWidget {
@@ -21,17 +20,19 @@ class _CarDetailsState extends State<CarDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: (Text(widget.car.name!)),
+        title: (Text(widget.car.title!)),
       ),
       body: SafeArea(
         child: Column(
           children: [
             // This is the picture of the car...
-            InteractiveViewer(
-              transformationController: _controller,
-              child: Image(
-                image: AssetImage(widget.car.url!),
-                fit: BoxFit.fitWidth,
+            Expanded(
+              child: InteractiveViewer(
+                transformationController: _controller,
+                child: Image(
+                  image: AssetImage(widget.car.url!),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             // This is everything below the picture
@@ -78,7 +79,7 @@ class _CarDetailsState extends State<CarDetails> {
         ),
         const SizedBox(height: 4),
         Text(
-          widget.car.name!,
+          widget.car.title!,
           style: const TextStyle(
             fontSize: 18,
           ),

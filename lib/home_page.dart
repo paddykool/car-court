@@ -1,6 +1,7 @@
+import 'package:car_court/favourites_cars_page.dart';
+import 'package:car_court/current_car_page.dart';
+import 'package:car_court/recent_cars_page.dart';
 import 'package:flutter/material.dart';
-import 'package:car_court/car.dart';
-import 'package:car_court/car_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -12,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
+  List<Widget> pages = [
+    const Featured(),
+    const ListOfCars(),
+    const Favourites(),
+  ];
+
+  void setSelectedIndex(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,57 +34,17 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: Car.cars.length,
-          itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CarDetails(car: Car.cars[index]),
-                ),
-              );
-            },
-            child: _buildCarCard(Car.cars[index]),
-          ),
-        ),
+        child: pages[selectedIndex],
       ),
-    );
-  }
-
-  Widget _buildCarCard(Car car) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image(
-              image: AssetImage(car.url!),
-            ),
-          ),
-          Text(
-            car.name!,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            car.year!.toString(),
-            style: const TextStyle(
-              fontSize: 14,
-            ),
-          ),
-          Text(
-            car.description!,
-            style: const TextStyle(
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Featured'),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favourites')
         ],
+        currentIndex: selectedIndex,
+        onTap: setSelectedIndex,
       ),
     );
   }

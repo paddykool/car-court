@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:car_court/home_page.dart';
+import 'package:car_court/car_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +12,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData();
+    // final ThemeData theme = ThemeData();
     return MaterialApp(
       title: 'Car Court',
-      theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(
-        primary: Colors.purple,
-        secondary: Colors.purpleAccent,
-      )),
+      theme: light(),
+      darkTheme: dark(),
       home: const HomePage(title: 'Car Court'),
     );
   }
