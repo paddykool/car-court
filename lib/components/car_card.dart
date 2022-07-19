@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'car.dart';
-import 'car_theme.dart';
+import 'package:car_court/models/car.dart';
 
 class CarCard extends StatelessWidget {
   const CarCard(this.car, {Key? key}) : super(key: key);
@@ -17,18 +16,18 @@ class CarCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image(
-              image: AssetImage(car.url!),
+              image: AssetImage(car.thumbnail),
             ),
           ),
           Text(
-            car.title!,
+            car.name,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            car.year!.toString(),
+            car.year.toString(),
             style: const TextStyle(
               fontSize: 14,
             ),

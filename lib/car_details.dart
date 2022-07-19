@@ -1,5 +1,5 @@
-import 'package:car_court/car.dart';
 import 'package:flutter/material.dart';
+import 'package:car_court/models/car.dart';
 
 class CarDetails extends StatefulWidget {
   final Car car;
@@ -20,7 +20,7 @@ class _CarDetailsState extends State<CarDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: (Text(widget.car.title!)),
+        title: (Text(widget.car.name)),
       ),
       body: SafeArea(
         child: Column(
@@ -30,7 +30,7 @@ class _CarDetailsState extends State<CarDetails> {
               child: InteractiveViewer(
                 transformationController: _controller,
                 child: Image(
-                  image: AssetImage(widget.car.url!),
+                  image: AssetImage(widget.car.thumbnail),
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -71,7 +71,7 @@ class _CarDetailsState extends State<CarDetails> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.car.year!.toString(),
+          widget.car.year.toString(),
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class _CarDetailsState extends State<CarDetails> {
         ),
         const SizedBox(height: 4),
         Text(
-          widget.car.title!,
+          widget.car.name,
           style: const TextStyle(
             fontSize: 18,
           ),
@@ -93,7 +93,7 @@ class _CarDetailsState extends State<CarDetails> {
         ),
         const SizedBox(height: 8),
         Text(
-          widget.car.description!,
+          widget.car.description,
           style: const TextStyle(
             fontSize: 16,
           ),

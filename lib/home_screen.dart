@@ -1,6 +1,6 @@
-import 'package:car_court/favourites_cars_page.dart';
-import 'package:car_court/current_car_page.dart';
-import 'package:car_court/recent_cars_page.dart';
+import 'package:car_court/pages/featured_cars.dart';
+import 'package:car_court/pages/list_of_cars.dart';
+import 'package:car_court/pages/favourite_cars_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,9 +16,9 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
 
   List<Widget> pages = [
-    const Featured(),
-    const ListOfCars(),
-    const Favourites(),
+    FeaturedCars(),
+    ListOfCars(),
+    const Favourite(),
   ];
 
   void setSelectedIndex(int index) {
