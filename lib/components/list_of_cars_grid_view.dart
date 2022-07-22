@@ -1,3 +1,4 @@
+import 'package:car_court/car_details.dart';
 import 'package:flutter/material.dart';
 import 'package:car_court/models/car.dart';
 import 'package:car_court/components/components.dart';
@@ -20,7 +21,18 @@ class ListOfCarsGridView extends StatelessWidget {
         ),
         itemCount: listOfCars.length,
         itemBuilder: (context, index) {
-          return CarThumbnail(listOfCars[index]);
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      CarDetails(car: listOfCars[index]),
+                ),
+              );
+            },
+            child: CarThumbnail(listOfCars[index]),
+          );
         },
       ),
     );

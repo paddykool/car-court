@@ -1,6 +1,7 @@
 {
   "cars": [
     {
+      "id" : "d8160e42-0be0-4a18-bcb7-eda1cf149d0e",
       "name": "BMW Z3",
       "year": 2003,
       "shortDescription": "1.9 Roadster 2d",
@@ -21,6 +22,7 @@
       "featured": true
     },
     {
+      "id" : "93848197-1577-4555-b281-f2a8f9a4e9af",
       "name": "Ford Capri",
       "year": 1986,
       "shortDescription": "2.8 Injection Special Fastback 3dr",
@@ -41,6 +43,7 @@
       "featured": true
     },
     {
+      "id" : "5f8a1378-e57e-422a-b532-ccab4e28541e",
       "name": "Honda Civic",
       "year": 2019,
       "shortDescription": "1.6 i-DTEC SR 5dr",
@@ -61,7 +64,8 @@
       "featured": false
     },
     {
-      "name": "Land Rover Discovery",
+      "id" : "6c27836c-6852-4fbb-84c5-2b5bbf9252e9",
+      "name": "Discovery",
       "year": 2011,
       "shortDescription": "3.0 SD V6 SE Tech Auto 4WD Euro 5 (s/s) 5dr",
       "price": 25850,
@@ -81,6 +85,7 @@
       "featured": false
     },
     {
+      "id" : "2a065161-52fb-4d33-8622-dfe2c5424ce7",
       "name": "Ford Fiesta",
       "year": 2018,
       "shortDescription": "1.4 ZETEC CLIMATE 16V 5d 80 BHP",
@@ -101,6 +106,7 @@
       "featured": false
     },
     {
+      "id": "448c831c-8ff5-4cb4-ad52-26c3a87175fc",
       "name": "Fiat Uno",
       "year": 1992,
       "shortDescription": "1.1 ie S 5dr",
@@ -121,6 +127,7 @@
       "featured": true
     },
     {
+      "id": "3b4c8ec0-41f5-422b-9dee-764245c42085",
       "name": "Vauxhall Vectra",
       "year": 2001,
       "shortDescription": "1.8i 16v Club 5dr",

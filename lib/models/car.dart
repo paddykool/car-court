@@ -5,6 +5,7 @@
 // TODO can have Nullable fields here if field is optional
 // final int? seats .... then in fromJson ... data['seats] as int?
 class Car {
+  final String id;
   final String name;
   final int year;
   final String shortDescription;
@@ -25,6 +26,7 @@ class Car {
   final bool featured; // TODO - make featured and featured details optional
 
   Car(
+    this.id,
     this.name,
     this.year,
     this.shortDescription,
@@ -47,6 +49,7 @@ class Car {
 
   factory Car.fromJson(Map<String, dynamic> data) {
     return Car(
+        data['id'] as String,
         data['name'] as String,
         data['year'] as int,
         data['shortDescription'] as String,
