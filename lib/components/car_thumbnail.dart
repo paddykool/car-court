@@ -10,9 +10,9 @@ class CarThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: ClipRRect(
@@ -29,7 +29,7 @@ class CarThumbnail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 5.0),
+                padding: const EdgeInsets.only(left: 15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -46,12 +46,7 @@ class CarThumbnail extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 5.0),
-                // TODO - make this fill when press and add car to favorites list
-                // Seems to be rebuilding all the tiles - is this ok ?
-                child: FavouriteIcon(car),
-              )
+              FavouriteIcon(car),
             ],
           ),
         ],

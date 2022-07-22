@@ -36,22 +36,26 @@ class FavouriteCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              height: 120,
-              width: 150,
+              height: 100,
+              width: 120,
               child: Image.asset(favourite.thumbnail),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(favourite.name, style: lightText.headline2),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Text(favourite.shortDescription),
-                Text("Year: ${favourite.year.toString()}"),
-                Text("Price ${favourite.price.toString()}"),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(favourite.name, style: lightText.headline2),
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  Text(favourite.shortDescription,
+                      textAlign:
+                          TextAlign.end), // No idea why I need this nere :(
+                  Text("Year: ${favourite.year.toString()}"),
+                  Text("Price ${favourite.price.toString()}"),
+                ],
+              ),
             )
           ],
         ),
