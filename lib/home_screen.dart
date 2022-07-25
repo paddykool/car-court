@@ -38,8 +38,9 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: Text(widget.title),
           ),
-          body: SafeArea(
-            child: pages[tabManager.selectedTab],
+          body: IndexedStack(
+            index: tabManager.selectedTab,
+            children: pages,
           ),
           bottomNavigationBar: BottomNavigationBar(
             items: const [

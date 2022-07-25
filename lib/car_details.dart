@@ -31,7 +31,7 @@ class _CarDetailsState extends State<CarDetails> {
                 transformationController: _controller,
                 child: Image(
                   image: AssetImage(widget.car.thumbnail),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

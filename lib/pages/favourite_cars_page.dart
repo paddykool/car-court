@@ -9,11 +9,18 @@ class Favourite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isFavoritesPopulated =
-        Provider.of<FavouritesManager>(context, listen: false)
-            .isFavouritesPopulated();
-    return isFavoritesPopulated
-        ? const NonEmptyFavouritesScreen()
-        : const EmptyFavoritesScreen();
+    return Consumer<FavouritesManager>(
+      builder: (context, favouritesManager, _) {
+        return favouritesManager.isFavouritesPopulated()
+            ? NonEmptyFavouritesScreen(favouritesManager)
+            : const EmptyFavoritesScreen();
+      },
+    );
+    // bool isFavoritesPopulated =
+    //     Provider.of<FavouritesManager>(context, listen: false)
+    //         .isFavouritesPopulated();
+    // return isFavoritesPopulated
+    //     ? const NonEmptyFavouritesScreen()
+    //     : const EmptyFavoritesScreen();
   }
 }
