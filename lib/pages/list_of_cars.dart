@@ -2,30 +2,42 @@ import 'package:car_court/models/car.dart';
 import 'package:flutter/material.dart';
 import 'package:car_court/api/mocked_api.dart';
 import 'package:car_court/components/components.dart';
+import 'package:provider/provider.dart';
+import '../models/app_manager.dart';
 
 class ListOfCars extends StatelessWidget {
   ListOfCars({Key? key}) : super(key: key);
 
-  // Get the mock API
-  // TODO Change this to just a normal function  - no need for class?
-  final mockedAPI = MockedAPI();
+  // // Get the mock API
+  // // TODO Change this to just a normal function  - no need for class?
+  // final mockedAPI = MockedAPI();
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: mockedAPI.getCarList(),
-      builder: (context, AsyncSnapshot<List<Car>> snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          final cars = snapshot.data ?? [];
-          return ListOfCarsGridView(cars);
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+    return Consumer<AppManager>(
+      builder: (context, appManager, _) {
+        return ListOfCarsGridView(appManager.cars);
       },
     );
   }
+  // return Consumer<AppManager>(
+  //   builder: (context, appManager, _) {
+  //     return FutureBuilder(
+  //       future: appManager.cars,
+  //       builder: (context, AsyncSnapshot<List<Car>> snapshot) {
+  //         if (snapshot.connectionState == ConnectionState.done) {
+  //           final cars = snapshot.data ?? [];
+  //           return ListOfCarsGridView(cars);
+  //         } else {
+  //           return const Center(
+  //             child: CircularProgressIndicator(),
+  //           );
+  //         }
+  //       },
+  //     );
+  //   },
+  // );
+
 }
 
 //// OLD LISTVIEW.BUILDER

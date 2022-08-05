@@ -65,12 +65,11 @@ class FavouriteIcon extends StatelessWidget {
       builder: (context, favoritesManager, _) {
         return IconButton(
           onPressed: () {
-            // TODO - Toggle this car to the favorites car list...
+            // TODO - for all of these - send in the carID
+            // instead of the entire car
             if (favoritesManager.isInFavoritesList(car)) {
-              // remove from favorites list
               favoritesManager.removeFavourite(car);
             } else {
-              // Add to favorites list
               favoritesManager.addFavorite(car);
             }
           },

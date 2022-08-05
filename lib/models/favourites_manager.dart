@@ -1,36 +1,29 @@
+// TODO - better to use ListenableProivider - https://medium.com/@lumeilin301/using-hive-in-flutter-c8c3a37dd21
 import 'package:flutter/material.dart';
 import 'car.dart';
-import 'package:collection/collection.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class FavouritesManager extends ChangeNotifier {
-  List<Car> _favourites = [];
-
-  // TODO - Should the list returned be 'List.unmodifiable()... ??
-  List<Car> get favourites => _favourites;
-
-  void addFavorite(car) {
-    _favourites.add(car);
-    // TODO - Do I need to notify here ????
-    // Cause the favorites screen is not displayed when this is called anywqys
-    // is this making al lthe cards rebuild after clicking the heart ?
+  void addFavorite(Car car) {
+    final favouritesBox = Hive.box<Car>('favourites');
+    favouritesBox.put(car.id, car);
     notifyListeners();
   }
 
+  // TODO - make this take the car ID instead of entire car
   void removeFavourite(car) {
-    _favourites.removeWhere((carFromList) => carFromList.id == car.id);
+    final favouritesBox = Hive.box<Car>('favourites');
+    favouritesBox.delete(car.id);
     notifyListeners();
   }
 
-  bool isInFavoritesList(car) {
-    // TODO - Do I need to define my own == here ?
-    // Hmm.... not sure this'll work
-    // return _favorites.contains(car);
-    Car? foundCar = _favourites
-        .singleWhereOrNull((carFromList) => car.id == carFromList.id);
-    return foundCar != null ? true : false;
+  bool isInFavoritesList(Car car) {
+    final listOfFavorites =
+        Hive.box<Car>('favourites').keys.toList().cast<String>();
+    return listOfFavorites.contains(car.id);
   }
 
   bool isFavouritesPopulated() {
-    return _favourites.isNotEmpty;
+    return Hive.box<Car>('favourites').isNotEmpty;
   }
 }

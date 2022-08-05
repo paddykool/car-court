@@ -16,6 +16,7 @@ class ListOfCarsGridView extends StatelessWidget {
         top: 15,
       ),
       child: GridView.builder(
+        controller: ScrollController(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
@@ -27,7 +28,7 @@ class ListOfCarsGridView extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) =>
-                      CarDetails(car: listOfCars[index]),
+                      CarDetails(carId: listOfCars[index].id),
                 ),
               );
             },

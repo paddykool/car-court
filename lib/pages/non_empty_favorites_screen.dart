@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../car_details.dart';
 import '../models/car.dart';
 import 'package:car_court/car_theme.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class NonEmptyFavouritesScreen extends StatelessWidget {
   final FavouritesManager favouritesManager;
@@ -11,42 +13,45 @@ class NonEmptyFavouritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Consumer<FavouritesManager>(
-    //   builder: (context, favouriteManager, _) {
-    List<Car> favourites = favouritesManager.favourites;
-    return ListView.builder(
-      controller: ScrollController(),
-      itemCount: favourites.length,
-      itemBuilder: (context, index) {
-        return Dismissible(
-          key: Key(favourites[index].id),
-          direction: DismissDirection.horizontal,
-          background: Container(
-            color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Icon(
-                  Icons.delete_forever,
-                  color: Colors.white,
-                  size: 50.0, // What's the deal if this isn't specified ?
+    return ValueListenableBuilder<Box<Car>>(
+      // TODO - Make a helper method for getting the box
+      valueListenable: Hive.box<Car>('favourites').listenable(),
+      builder: (context, box, _) {
+        final favourites = box.values.toList().cast<Car>();
+        return ListView.builder(
+          controller: ScrollController(), // TODO - why this again?
+          itemCount: favourites.length,
+          itemBuilder: (context, index) {
+            return Dismissible(
+              key: Key(favourites[index].id),
+              direction: DismissDirection.horizontal,
+              background: Container(
+                color: Colors.red,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    // TODO - Put this 3 times and put as a component
+                    Icon(
+                      Icons.delete_forever,
+                      color: Colors.white,
+                      size: 50.0, // What's the deal if this isn't specified ?
+                    ),
+                    Icon(
+                      Icons.delete_forever,
+                      color: Colors.white,
+                      size: 50.0, // What's the deal if this isn't specified ?
+                    )
+                  ],
                 ),
-                Icon(
-                  Icons.delete_forever,
-                  color: Colors.white,
-                  size: 50.0, // What's the deal if this isn't specified ?
-                )
-              ],
-            ),
-          ),
-          onDismissed: (direction) =>
-              favouritesManager.removeFavourite(favourites[index]),
-          child: FavouriteCard(favourites[index]),
+              ),
+              onDismissed: (direction) =>
+                  favouritesManager.removeFavourite(favourites[index]),
+              child: FavouriteCard(favourites[index]),
+            );
+          },
         );
       },
     );
-    //   },
-    // );
   }
 }
 
@@ -62,7 +67,8 @@ class FavouriteCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => CarDetails(car: favourite),
+              builder: (BuildContext context) =>
+                  CarDetails(carId: favourite.id),
             ),
           );
         },

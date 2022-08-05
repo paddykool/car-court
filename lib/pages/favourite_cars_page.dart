@@ -16,11 +16,5 @@ class Favourite extends StatelessWidget {
             : const EmptyFavoritesScreen();
       },
     );
-    // bool isFavoritesPopulated =
-    //     Provider.of<FavouritesManager>(context, listen: false)
-    //         .isFavouritesPopulated();
-    // return isFavoritesPopulated
-    //     ? const NonEmptyFavouritesScreen()
-    //     : const EmptyFavoritesScreen();
   }
 }
