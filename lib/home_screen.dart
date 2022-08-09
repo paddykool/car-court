@@ -1,14 +1,11 @@
-import 'package:car_court/models/tab_manager.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hive/hive.dart';
 import 'package:car_court/features/featured_cars/featured_cars.dart';
 import 'package:car_court/features/car_list/list_of_cars.dart';
 import 'package:car_court/features/featured_cars/favourite_cars_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:provider/provider.dart';
-import 'package:hive/hive.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-
-import 'models/app_manager.dart';
+import 'package:car_court/models/app_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -25,12 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> pages = [
-    FeaturedCars(),
-    ListOfCars(),
-    const Favourite(),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   void initialisation() async {
     // populate the list of cars from the API
-    // TODO - maake initiaaliseApp app return nothing if takaing too long
+    // TODO - maake initialiseApp app return nothing if taking too long
     // TODO - AND have a network error pop-up
     // https://stackoverflow.com/questions/52672137/await-future-for-a-specific-time
     // See also AutoTrader app or network error behaviour
@@ -54,22 +45,23 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  // List of Tab Pages
+  List<Widget> pages = [
+    const FeaturedCars(),
+    ListOfCars(),
+    const Favourite(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<TabManager>(
-      builder: (context, tabManager, child) {
+    return Consumer<AppManager>(
+      builder: (context, appManager, child) {
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
             title: Text(widget.title),
           ),
-          // Might take this out if getting all cars on startup
-          // Do i need IndexedStack if API call is on the splash screen?
-          // TODO - Taake this Out aand revert to normal 'pages[selectedTab]'
-          body: IndexedStack(
-            index: tabManager.selectedTab,
-            children: pages,
-          ),
+          body: pages[appManager.selectedTab],
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
@@ -78,8 +70,8 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.favorite), label: 'Favourites')
             ],
-            currentIndex: tabManager.selectedTab,
-            onTap: (index) => tabManager.goTab(index), //setSelectedIndex,
+            currentIndex: appManager.selectedTab,
+            onTap: (index) => appManager.goTab(index), //setSelectedIndex,
           ),
         );
       },

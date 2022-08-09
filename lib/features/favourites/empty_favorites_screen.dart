@@ -1,6 +1,6 @@
-import 'package:car_court/models/tab_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:car_court/models/app_manager.dart';
 
 class EmptyFavoritesScreen extends StatelessWidget {
   const EmptyFavoritesScreen({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class EmptyFavoritesScreen extends StatelessWidget {
             ),
             color: Colors.purple,
             onPressed: () {
-              Provider.of<TabManager>(context, listen: false).goTab(1);
+              Provider.of<AppManager>(context, listen: false).goTab(1);
             },
           )
         ],

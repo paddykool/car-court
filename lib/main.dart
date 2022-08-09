@@ -1,16 +1,14 @@
-import 'package:car_court/models/app_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:car_court/home_screen.dart';
-import 'package:car_court/theme/car_theme.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
-import 'package:car_court/models/tab_manager.dart';
-import 'package:car_court/models/favourites_manager.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'models/car.dart';
+import 'package:car_court/models/app_manager.dart';
+import 'package:car_court/home_screen.dart';
+import 'package:car_court/theme/car_theme.dart';
+import 'package:car_court/models/favourites_manager.dart';
+import 'package:car_court/models/car.dart';
 
-// TODO - Put managers in a barrel file... and any other stuff like screens
+// TODO - Put managers in a barrel file... and any other stuff like screens maybe ?
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -36,14 +34,9 @@ class MyApp extends StatelessWidget {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (BuildContext context) => TabManager(),
-          ),
-          ChangeNotifierProvider(
             create: (BuildContext context) => FavouritesManager(),
           ),
           ChangeNotifierProvider(
-            // Should this be in main ?
-            // And then call the API on startup??? - couldn't be bothered...
             create: (BuildContext context) => AppManager(),
           ),
         ],
