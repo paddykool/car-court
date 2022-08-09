@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:car_court/models/car.dart';
 import 'package:provider/provider.dart';
 
-import 'models/app_manager.dart';
+import '../../models/app_manager.dart';
 
 class CarDetails extends StatefulWidget {
   final String carId;

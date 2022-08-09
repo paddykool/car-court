@@ -1,7 +1,7 @@
 import 'package:car_court/models/tab_manager.dart';
-import 'package:car_court/pages/featured_cars.dart';
-import 'package:car_court/pages/list_of_cars.dart';
-import 'package:car_court/pages/favourite_cars_page.dart';
+import 'package:car_court/features/featured_cars/featured_cars.dart';
+import 'package:car_court/features/car_list/list_of_cars.dart';
+import 'package:car_court/features/featured_cars/favourite_cars_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
 
   void initialisation() async {
     // populate the list of cars from the API
-    // TODO - maake initiaaliseApp app return nothing if taakaing too long
+    // TODO - maake initiaaliseApp app return nothing if takaing too long
     // TODO - AND have a network error pop-up
     // https://stackoverflow.com/questions/52672137/await-future-for-a-specific-time
     // See also AutoTrader app or network error behaviour
@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
           // Might take this out if getting all cars on startup
           // Do i need IndexedStack if API call is on the splash screen?
+          // TODO - Taake this Out aand revert to normal 'pages[selectedTab]'
           body: IndexedStack(
             index: tabManager.selectedTab,
             children: pages,

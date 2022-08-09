@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:car_court/models/car.dart';
-import 'components.dart';
+import 'car_card.dart';
 
 class FeaturedCarsListView extends StatelessWidget {
   const FeaturedCarsListView(this.featuredCars, {Key? key}) : super(key: key);

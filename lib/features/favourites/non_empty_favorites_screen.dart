@@ -1,8 +1,8 @@
-import 'package:car_court/models/favourites_manager.dart';
 import 'package:flutter/material.dart';
-import '../car_details.dart';
-import '../models/car.dart';
-import 'package:car_court/car_theme.dart';
+import 'package:car_court/models/favourites_manager.dart';
+import 'package:car_court/models/car.dart';
+import 'package:car_court/theme/car_theme.dart';
+import 'package:car_court/features/car_details/car_details.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

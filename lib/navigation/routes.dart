@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:car_court/home_screen.dart';
-import 'package:car_court/car_details.dart';
+import 'package:car_court/features/car_details/car_details.dart';
 
 class Routes {
   // TODO - implement a splash screen

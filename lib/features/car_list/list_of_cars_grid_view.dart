@@ -1,7 +1,7 @@
-import 'package:car_court/car_details.dart';
+import 'package:car_court/features/car_details/car_details.dart';
 import 'package:flutter/material.dart';
 import 'package:car_court/models/car.dart';
-import 'package:car_court/components/components.dart';
+import 'car_thumbnail.dart';
 
 class ListOfCarsGridView extends StatelessWidget {
   const ListOfCarsGridView(this.listOfCars, {Key? key}) : super(key: key);

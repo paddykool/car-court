@@ -1,16 +1,10 @@
-import 'package:car_court/models/app_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:car_court/models/car.dart';
-import 'package:car_court/api/mocked_api.dart';
-import 'package:car_court/components/components.dart';
 import 'package:provider/provider.dart';
+import 'package:car_court/models/app_manager.dart';
+import 'featured_cars_list_view.dart';
 
 class FeaturedCars extends StatelessWidget {
-  FeaturedCars({Key? key}) : super(key: key);
-
-  // Get the mock API
-  // TODO Change this to just a normal function  - no need for class?
-  final mockedAPI = MockedAPI();
+  const FeaturedCars({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

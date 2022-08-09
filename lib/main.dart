@@ -1,7 +1,7 @@
 import 'package:car_court/models/app_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:car_court/home_screen.dart';
-import 'package:car_court/car_theme.dart';
+import 'package:car_court/theme/car_theme.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:car_court/models/tab_manager.dart';

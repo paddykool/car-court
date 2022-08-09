@@ -1,9 +1,7 @@
-import 'package:car_court/models/car.dart';
 import 'package:flutter/material.dart';
-import 'package:car_court/api/mocked_api.dart';
-import 'package:car_court/components/components.dart';
+import 'list_of_cars_grid_view.dart';
 import 'package:provider/provider.dart';
-import '../models/app_manager.dart';
+import 'package:car_court/models/app_manager.dart';
 
 class ListOfCars extends StatelessWidget {
   ListOfCars({Key? key}) : super(key: key);
