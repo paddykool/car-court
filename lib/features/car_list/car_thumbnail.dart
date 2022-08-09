@@ -20,6 +20,7 @@ class CarThumbnail extends StatelessWidget {
               child: Image.asset(
                 car.thumbnail,
                 fit: BoxFit.cover, // TODO - What the hell is this anyways?
+                // This tell the image how to cover its area of it's parent
               ),
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -55,6 +56,7 @@ class CarThumbnail extends StatelessWidget {
   }
 }
 
+// TODO - take this out into a separate file ?
 class FavouriteIcon extends StatelessWidget {
   final Car car;
   const FavouriteIcon(this.car, {Key? key}) : super(key: key);

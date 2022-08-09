@@ -6,16 +6,16 @@ class AppManager extends ChangeNotifier {
   List<Car> _cars = [];
   int _selectedTab = 0;
 
+  // TODO - put a didLoad bool within 5 secounds here to catch api errors of too slow api??
+  // https://stackoverflow.com/questions/52672137/await-future-for-a-specific-time
+  // - Is here the right place for that ?
+  List<Car> get cars => List.unmodifiable(_cars);
   int get selectedTab => _selectedTab;
 
   void goTab(int index) {
     _selectedTab = index;
     notifyListeners();
   }
-
-  // TODO - put a didLoad bool within 5 secounds here to catch api errors of too slow api??
-  // https://stackoverflow.com/questions/52672137/await-future-for-a-specific-time
-  List<Car> get cars => List.unmodifiable(_cars);
 
   Future<void> initialiseApp() async {
     // Populate car list from API
