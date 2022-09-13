@@ -68,7 +68,11 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.star), label: 'Featured'),
               BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), label: 'Favourites')
+                  icon: Icon(
+                    Icons.favorite,
+                    key: ValueKey('favourites'),
+                  ),
+                  label: 'Favourites')
             ],
             currentIndex: appManager.selectedTab,
             onTap: (index) => appManager.goTab(index), //setSelectedIndex,

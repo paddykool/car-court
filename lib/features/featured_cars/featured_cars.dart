@@ -13,20 +13,5 @@ class FeaturedCars extends StatelessWidget {
         return FeaturedCarsListView(appManager.cars);
       },
     );
-
-    // return FutureBuilder(
-    //   future: mockedAPI.getCarList(),
-    //   builder: (context, AsyncSnapshot<List<Car>> snapshot) {
-    //     if (snapshot.connectionState == ConnectionState.done) {
-    //       // TODO do I need a conditional op here (??) ?
-    //       final cars = snapshot.data ?? [];
-    //       return FeaturedCarsListView(cars);
-    //     } else {
-    //       return const Center(
-    //         child: CircularProgressIndicator(),
-    //       );
-    //     }
-    //   },
-    // );
   }
 }

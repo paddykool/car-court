@@ -6,7 +6,7 @@ class MockedAPI {
   // Mocked service to bring back the list of cars
   Future<List<Car>> getCarList() async {
     // Mock a 3 second delay when getting the list of cars
-    await Future.delayed(const Duration(milliseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 2000));
 
     // Get da json
     final dataString = await rootBundle.loadString('assets/mock_car_data.json');

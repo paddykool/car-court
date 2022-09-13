@@ -26,11 +26,12 @@ class EmptyFavoritesScreen extends StatelessWidget {
             "No Favorites",
             style: Theme.of(context).textTheme.headline6,
           ),
-          SizedBox(height: 25),
-          Text("Get Some Favorites In Our Car List"),
+          const SizedBox(height: 25),
+          const Text("Get Some Favorites In Our Car List"),
           MaterialButton(
+            key: ValueKey('goToListButton'),
             textColor: Colors.white,
-            child: Text("Browse Our Cars"),
+            child: const Text("Browse Our Cars", key: ValueKey('goToListText')),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
             ),

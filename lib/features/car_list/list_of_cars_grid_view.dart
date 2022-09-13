@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:car_court/models/car.dart';
-import 'package:car_court/models/app_manager.dart';
-import 'package:car_court/features/car_details/car_details.dart';
+import 'package:go_router/go_router.dart';
 import 'car_thumbnail.dart';
 
 class ListOfCarsGridView extends StatelessWidget {
@@ -26,13 +24,7 @@ class ListOfCarsGridView extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      CarDetails(carId: listOfCars[index].id),
-                ),
-              );
+              context.go('/car_details/${listOfCars[index].id}');
             },
             child: CarThumbnail(listOfCars[index]),
           );

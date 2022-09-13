@@ -21,8 +21,9 @@ class FeaturedCarsListView extends StatelessWidget {
               // TODO - why can I not put an emoji here ?
               "Our Featured Cars",
               style: Theme.of(context).textTheme.headline1,
+              key: const ValueKey("Feature Cars Title"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             // TODO - I dont like Container here - see what APOD does ... try to remove

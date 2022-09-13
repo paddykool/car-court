@@ -17,10 +17,15 @@ class CarThumbnail extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               // Rounded corners
-              child: Image.asset(
-                car.thumbnail,
-                fit: BoxFit.cover, // TODO - What the hell is this anyways?
-                // This tell the image how to cover its area of it's parent
+              // child: Image.asset(
+              //   car.thumbnail,
+              //   fit: BoxFit.cover,
+              // ),
+              // TODO - Traansfer all images to google drive
+              //      - then to fireabase at some stage
+              child: Image.network(
+                'https://drive.google.com/uc?export=view&id=1tjsNCJr9QkeE8fFo7qFJjtNjOtNrZi8R',
+                fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(10.0),
             ),
